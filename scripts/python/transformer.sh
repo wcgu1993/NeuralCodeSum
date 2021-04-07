@@ -14,6 +14,7 @@ make_dir $MODEL_DIR
 
 DATASET=python
 CODE_EXTENSION=original_subtoken
+TAG_EXTENSION=tag
 JAVADOC_EXTENSION=original
 
 
@@ -31,12 +32,14 @@ PYTHONPATH=$SRC_DIR CUDA_VISIBLE_DEVICES=$RGPU python -W ignore ${SRC_DIR}/main/
 --model_dir $MODEL_DIR \
 --model_name $MODEL_NAME \
 --train_src train/code.${CODE_EXTENSION} \
+--train_tag train/code.${TAG_EXENSION} \
 --train_tgt train/javadoc.${JAVADOC_EXTENSION} \
 --dev_src dev/code.${CODE_EXTENSION} \
 --dev_tgt dev/javadoc.${JAVADOC_EXTENSION} \
 --uncase True \
 --use_src_word True \
 --use_src_char False \
+--use_src_code True \
 --use_tgt_word True \
 --use_tgt_char False \
 --max_src_len 400 \
